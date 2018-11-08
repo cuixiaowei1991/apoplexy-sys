@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.dao.SubCenterInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.entity.SubCenterInfo" >
+    <constructor >
+      <idArg column="SUBCENTER_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SUBCENTER_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SUBCENTER_IMAGE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SUBCENTER_ADDRESS" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SUBCENTER_PERSON_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SUBCENTER_PERSON_MOBILE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SUBCENTER_CREATETIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="SUBCENTER_UPDATETIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SUBCENTER_ID, SUBCENTER_NAME, SUBCENTER_IMAGE, SUBCENTER_ADDRESS, SUBCENTER_PERSON_NAME, 
+    SUBCENTER_PERSON_MOBILE, SUBCENTER_CREATETIME, SUBCENTER_UPDATETIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from subcenterinfo
+    where SUBCENTER_ID = #{subcenterId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from subcenterinfo
+    where SUBCENTER_ID = #{subcenterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.SubCenterInfo" >
+    insert into subcenterinfo (SUBCENTER_ID, SUBCENTER_NAME, SUBCENTER_IMAGE, 
+      SUBCENTER_ADDRESS, SUBCENTER_PERSON_NAME, 
+      SUBCENTER_PERSON_MOBILE, SUBCENTER_CREATETIME, 
+      SUBCENTER_UPDATETIME)
+    values (#{subcenterId,jdbcType=INTEGER}, #{subcenterName,jdbcType=VARCHAR}, #{subcenterImage,jdbcType=VARCHAR}, 
+      #{subcenterAddress,jdbcType=VARCHAR}, #{subcenterPersonName,jdbcType=VARCHAR}, 
+      #{subcenterPersonMobile,jdbcType=VARCHAR}, #{subcenterCreatetime,jdbcType=TIMESTAMP}, 
+      #{subcenterUpdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.entity.SubCenterInfo" >
+    insert into subcenterinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="subcenterId != null" >
+        SUBCENTER_ID,
+      </if>
+      <if test="subcenterName != null" >
+        SUBCENTER_NAME,
+      </if>
+      <if test="subcenterImage != null" >
+        SUBCENTER_IMAGE,
+      </if>
+      <if test="subcenterAddress != null" >
+        SUBCENTER_ADDRESS,
+      </if>
+      <if test="subcenterPersonName != null" >
+        SUBCENTER_PERSON_NAME,
+      </if>
+      <if test="subcenterPersonMobile != null" >
+        SUBCENTER_PERSON_MOBILE,
+      </if>
+      <if test="subcenterCreatetime != null" >
+        SUBCENTER_CREATETIME,
+      </if>
+      <if test="subcenterUpdatetime != null" >
+        SUBCENTER_UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="subcenterId != null" >
+        #{subcenterId,jdbcType=INTEGER},
+      </if>
+      <if test="subcenterName != null" >
+        #{subcenterName,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterImage != null" >
+        #{subcenterImage,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterAddress != null" >
+        #{subcenterAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterPersonName != null" >
+        #{subcenterPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterPersonMobile != null" >
+        #{subcenterPersonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterCreatetime != null" >
+        #{subcenterCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subcenterUpdatetime != null" >
+        #{subcenterUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.entity.SubCenterInfo" >
+    update subcenterinfo
+    <set >
+      <if test="subcenterName != null and subcenterName != ''" >
+        SUBCENTER_NAME = #{subcenterName,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterImage != null and subcenterImage !=''" >
+        SUBCENTER_IMAGE = #{subcenterImage,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterAddress != null and subcenterAddress !=''" >
+        SUBCENTER_ADDRESS = #{subcenterAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterPersonName != null and subcenterPersonName !=''" >
+        SUBCENTER_PERSON_NAME = #{subcenterPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterPersonMobile != null and subcenterPersonMobile !=''" >
+        SUBCENTER_PERSON_MOBILE = #{subcenterPersonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenterCreatetime != null and subcenterCreatetime !=''" >
+        SUBCENTER_CREATETIME = #{subcenterCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subcenterUpdatetime != null and subcenterUpdatetime !=''" >
+        SUBCENTER_UPDATETIME = #{subcenterUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SUBCENTER_ID = #{subcenterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.entity.SubCenterInfo" >
+    update subcenterinfo
+    set SUBCENTER_NAME = #{subcenterName,jdbcType=VARCHAR},
+      SUBCENTER_IMAGE = #{subcenterImage,jdbcType=VARCHAR},
+      SUBCENTER_ADDRESS = #{subcenterAddress,jdbcType=VARCHAR},
+      SUBCENTER_PERSON_NAME = #{subcenterPersonName,jdbcType=VARCHAR},
+      SUBCENTER_PERSON_MOBILE = #{subcenterPersonMobile,jdbcType=VARCHAR},
+      SUBCENTER_CREATETIME = #{subcenterCreatetime,jdbcType=TIMESTAMP},
+      SUBCENTER_UPDATETIME = #{subcenterUpdatetime,jdbcType=TIMESTAMP}
+    where SUBCENTER_ID = #{subcenterId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="com.cn.entity.SubCenterInfo" >
+    select
+    <include refid="Base_Column_List" />
+    from subcenterinfo
+    where  1=1
+    <if test="subcenterName != null and subcenterName !=''" >
+      AND SUBCENTER_NAME LIKE CONCAT(CONCAT('%',#{subcenterName},'%'))
+    </if>
+    <if test="subcenterId != null" >
+      AND SUBCENTER_ID = #{subcenterId,jdbcType=INTEGER}
+    </if>
+
+  </select>
+
+  <select id="queryPageByConditons" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT * from (SELECT T1.*, rownum linenum from (
+    select
+    <include refid="Base_Column_List" />
+    from subcenterinfo
+    where 1=1
+    <if test="map.subcenterId != null and map.subcenterId != ''">
+      and SUBCENTER_ID=#{map.subcenterId}
+    </if>
+    <if test="map.subcenterName != null and map.subcenterName != ''">
+      and SUBCENTER_NAME  LIKE CONCAT(CONCAT('%',#{subcenterName},'%'))
+    </if>
+    <!--<if test="map.messageOpenid != null and map.messageOpenid != ''">
+      and MESSAGE_OPENID =#{map.messageOpenid}
+    </if>-->
+    order by
+    SUBCENTER_UPDATETIME desc
+    )T1 WHERE rownum &lt;= #{map.endRow})
+    T2 WHERE linenum &gt;= #{map.startRow}
+  </select>
+
+
+  <select id="queryPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(1) FROM subcenterinfo
+    WHERE 1=1
+    <if test="map.subcenterId != null and map.subcenterId != ''">
+      and SUBCENTER_ID=#{map.subcenterId}
+    </if>
+    <if test="map.subcenterName != null and map.subcenterName != ''">
+      and SUBCENTER_NAME  LIKE CONCAT(CONCAT('%',#{subcenterName},'%'))
+    </if>
+
+  </select>
+
+
+
+
+</mapper>

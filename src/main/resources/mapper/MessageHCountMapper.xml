@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.dao.MessageHCountMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.entity.MessageHCount" >
+    <constructor >
+      <idArg column="HCOUNT_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="HCOUNT_TOPIC_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="HCOUNT_TMS_COUNT" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="HCOUNT_UPDATETIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    HCOUNT_ID, HCOUNT_TOPIC_ID, HCOUNT_TMS_COUNT, HCOUNT_UPDATETIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from messagehcount
+    where HCOUNT_ID = #{hcountId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByEntity" resultMap="BaseResultMap" parameterType="com.cn.entity.MessageHCount" >
+    select
+    <include refid="Base_Column_List" />
+    from messagehcount
+    where 1=1
+    <if test="hcountId != null" >
+      AND HCOUNT_ID = #{hcountId,jdbcType=INTEGER}
+    </if>
+    <if test="hcountTopicId != null" >
+      AND HCOUNT_TOPIC_ID = #{hcountTopicId,jdbcType=INTEGER}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from messagehcount
+    where HCOUNT_ID = #{hcountId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.MessageHCount" >
+    insert into messagehcount (HCOUNT_ID, HCOUNT_TOPIC_ID, HCOUNT_TMS_COUNT, 
+      HCOUNT_UPDATETIME)
+    values (#{hcountId,jdbcType=INTEGER}, #{hcountTopicId,jdbcType=INTEGER}, #{hcountTmsCount,jdbcType=INTEGER}, 
+      #{hcountUpdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.entity.MessageHCount" >
+    insert into messagehcount
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hcountId != null" >
+        HCOUNT_ID,
+      </if>
+      <if test="hcountTopicId != null" >
+        HCOUNT_TOPIC_ID,
+      </if>
+      <if test="hcountTmsCount != null" >
+        HCOUNT_TMS_COUNT,
+      </if>
+      <if test="hcountUpdatetime != null" >
+        HCOUNT_UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hcountId != null" >
+        #{hcountId,jdbcType=INTEGER},
+      </if>
+      <if test="hcountTopicId != null" >
+        #{hcountTopicId,jdbcType=INTEGER},
+      </if>
+      <if test="hcountTmsCount != null" >
+        #{hcountTmsCount,jdbcType=INTEGER},
+      </if>
+      <if test="hcountUpdatetime != null" >
+        #{hcountUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.entity.MessageHCount" >
+    update messagehcount
+    <set >
+      <if test="hcountTopicId != null" >
+        HCOUNT_TOPIC_ID = #{hcountTopicId,jdbcType=INTEGER},
+      </if>
+      <if test="hcountTmsCount != null" >
+        HCOUNT_TMS_COUNT = #{hcountTmsCount,jdbcType=INTEGER},
+      </if>
+      <if test="hcountUpdatetime != null" >
+        HCOUNT_UPDATETIME = #{hcountUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where HCOUNT_ID = #{hcountId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.entity.MessageHCount" >
+    update messagehcount
+    set HCOUNT_TOPIC_ID = #{hcountTopicId,jdbcType=INTEGER},
+      HCOUNT_TMS_COUNT = #{hcountTmsCount,jdbcType=INTEGER},
+      HCOUNT_UPDATETIME = #{hcountUpdatetime,jdbcType=TIMESTAMP}
+    where HCOUNT_ID = #{hcountId,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(1) FROM messagehcount
+    WHERE 1=1
+    <if test="map.topicId != null and map.topicId != ''">
+      and TOPIC_ID=#{map.topicId}
+    </if>
+   </select>
+</mapper>

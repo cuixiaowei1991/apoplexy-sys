@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.dao.TopicInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.entity.TopicInfo" >
+    <constructor >
+      <idArg column="TOPIC_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="TOPIC_OPENID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TOPIC_APPID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TOPIC_SUB_CENTER_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="TOPIC_TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TOPIC_LABEL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TOPIC_CONTENT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TOPIC_CREATETIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="TOPIC_ISNEW" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TOPIC_ID, TOPIC_OPENID, TOPIC_APPID, TOPIC_SUB_CENTER_ID, TOPIC_TYPE, TOPIC_LABEL, 
+    TOPIC_CONTENT, TOPIC_CREATETIME, TOPIC_ISNEW
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from topicinfo
+    where TOPIC_ID = #{topicId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from topicinfo
+    where TOPIC_ID = #{topicId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.TopicInfo" >
+    insert into topicinfo (TOPIC_ID, TOPIC_OPENID, TOPIC_APPID, 
+      TOPIC_SUB_CENTER_ID, TOPIC_TYPE, TOPIC_LABEL, 
+      TOPIC_CONTENT, TOPIC_CREATETIME, TOPIC_ISNEW
+      )
+    values (#{topicId,jdbcType=INTEGER}, #{topicOpenid,jdbcType=VARCHAR}, #{topicAppid,jdbcType=VARCHAR}, 
+      #{topicSubCenterId,jdbcType=INTEGER}, #{topicType,jdbcType=VARCHAR}, #{topicLabel,jdbcType=VARCHAR}, 
+      #{topicContent,jdbcType=VARCHAR}, #{topicCreatetime,jdbcType=TIMESTAMP}, #{topicIsnew,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.entity.TopicInfo" >
+    insert into topicinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="topicId != null" >
+        TOPIC_ID,
+      </if>
+      <if test="topicOpenid != null" >
+        TOPIC_OPENID,
+      </if>
+      <if test="topicAppid != null" >
+        TOPIC_APPID,
+      </if>
+      <if test="topicSubCenterId != null" >
+        TOPIC_SUB_CENTER_ID,
+      </if>
+      <if test="topicType != null" >
+        TOPIC_TYPE,
+      </if>
+      <if test="topicLabel != null" >
+        TOPIC_LABEL,
+      </if>
+      <if test="topicContent != null" >
+        TOPIC_CONTENT,
+      </if>
+      <if test="topicCreatetime != null" >
+        TOPIC_CREATETIME,
+      </if>
+      <if test="topicIsnew != null" >
+        TOPIC_ISNEW,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="topicId != null" >
+        #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="topicOpenid != null" >
+        #{topicOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="topicAppid != null" >
+        #{topicAppid,jdbcType=VARCHAR},
+      </if>
+      <if test="topicSubCenterId != null" >
+        #{topicSubCenterId,jdbcType=INTEGER},
+      </if>
+      <if test="topicType != null" >
+        #{topicType,jdbcType=VARCHAR},
+      </if>
+      <if test="topicLabel != null" >
+        #{topicLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="topicContent != null" >
+        #{topicContent,jdbcType=VARCHAR},
+      </if>
+      <if test="topicCreatetime != null" >
+        #{topicCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topicIsnew != null" >
+        #{topicIsnew,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.entity.TopicInfo" >
+    update topicinfo
+    <set >
+      <if test="topicOpenid != null" >
+        TOPIC_OPENID = #{topicOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="topicAppid != null" >
+        TOPIC_APPID = #{topicAppid,jdbcType=VARCHAR},
+      </if>
+      <if test="topicSubCenterId != null" >
+        TOPIC_SUB_CENTER_ID = #{topicSubCenterId,jdbcType=INTEGER},
+      </if>
+      <if test="topicType != null" >
+        TOPIC_TYPE = #{topicType,jdbcType=VARCHAR},
+      </if>
+      <if test="topicLabel != null" >
+        TOPIC_LABEL = #{topicLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="topicContent != null" >
+        TOPIC_CONTENT = #{topicContent,jdbcType=VARCHAR},
+      </if>
+      <if test="topicCreatetime != null" >
+        TOPIC_CREATETIME = #{topicCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topicIsnew != null" >
+        TOPIC_ISNEW = #{topicIsnew,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TOPIC_ID = #{topicId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.entity.TopicInfo" >
+    update topicinfo
+    set TOPIC_OPENID = #{topicOpenid,jdbcType=VARCHAR},
+      TOPIC_APPID = #{topicAppid,jdbcType=VARCHAR},
+      TOPIC_SUB_CENTER_ID = #{topicSubCenterId,jdbcType=INTEGER},
+      TOPIC_TYPE = #{topicType,jdbcType=VARCHAR},
+      TOPIC_LABEL = #{topicLabel,jdbcType=VARCHAR},
+      TOPIC_CONTENT = #{topicContent,jdbcType=VARCHAR},
+      TOPIC_CREATETIME = #{topicCreatetime,jdbcType=TIMESTAMP},
+      TOPIC_ISNEW = #{topicIsnew,jdbcType=VARCHAR}
+    where TOPIC_ID = #{topicId,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryPageByConditons" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT * from (SELECT T1.*, rownum linenum from (
+    select
+    <include refid="Base_Column_List" />
+    from topicinfo
+    where 1=1
+    <if test="map.topicId != null and map.topicId != ''">
+      and TOPIC_ID=#{map.topicId}
+    </if>
+
+    <if test="map.topicOpenid != null and map.topicOpenid != ''">
+      and TOPIC_OPENID =#{map.topicOpenid}
+    </if>
+    <if test="map.subCenterId != null and map.subCenterId != ''">
+      and TOPIC_SUB_CENTER_ID=#{map.subCenterId}
+    </if>
+    <!--<if test="map.messageOpenid != null and map.messageOpenid != ''">
+      and MESSAGE_OPENID =#{map.messageOpenid}
+    </if>-->
+    order by
+    TOPIC_CREATETIME desc
+    )T1 WHERE rownum &lt;= #{map.endRow})
+    T2 WHERE linenum &gt;= #{map.startRow}
+  </select>
+
+  <select id="queryPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(1) FROM topicinfo
+    WHERE 1=1
+     <if test="map.subCenterId != null and map.subCenterId != ''">
+      and TOPIC_SUB_CENTER_ID=#{map.subCenterId}
+    </if>
+    <!--<if test="map.label != null and map.label != ''">
+      and TOPIC_LABEL =#{map.label}
+    </if>-->
+  </select>
+</mapper>

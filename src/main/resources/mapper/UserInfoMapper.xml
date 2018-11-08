@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.dao.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.entity.UserInfo" >
+    <constructor >
+      <idArg column="USERINFO_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="USERINFO_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_DES" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USERINFO_WECHAT_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USERINFO_WECHAT_APPID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USERINFO_WECHAT_OPENID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USERINFO_SUB_CENTER_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="USERINFO_SEX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USERINFO_WECHAT_HEADIMAGE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USERINFO_AGE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USERINFO_ROLE_TAG" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USERINFO_CREATETIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="USERINFO_IS_SUBSCRIBE" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USERINFO_ID, USERINFO_NAME, USER_DES, USER_TYPE, USERINFO_WECHAT_NAME, USERINFO_WECHAT_APPID, 
+    USERINFO_WECHAT_OPENID, USERINFO_SUB_CENTER_ID, USERINFO_SEX, USERINFO_WECHAT_HEADIMAGE,
+    USERINFO_AGE, USERINFO_ROLE_TAG, USERINFO_CREATETIME, USERINFO_IS_SUBSCRIBE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where USERINFO_ID = #{userinfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userinfo
+    where USERINFO_ID = #{userinfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.UserInfo" >
+    insert into userinfo (USERINFO_ID, USERINFO_NAME, USER_DES, 
+      USER_TYPE, USERINFO_WECHAT_NAME, USERINFO_WECHAT_APPID, 
+      USERINFO_WECHAT_OPENID, USERINFO_SUB_CENTER_ID, 
+      USERINFO_SEX, USERINFO_WECHAT_HEADIMAGE, USERINFO_AGE,
+      USERINFO_ROLE_TAG, USERINFO_CREATETIME,
+      USERINFO_IS_SUBSCRIBE)
+    values (#{userinfoId,jdbcType=INTEGER}, #{userinfoName,jdbcType=VARCHAR}, #{userDes,jdbcType=VARCHAR},
+      #{userType,jdbcType=VARCHAR}, #{userinfoWechatName,jdbcType=VARCHAR}, #{userinfoWechatAppid,jdbcType=VARCHAR},
+      #{userinfoWechatOpenid,jdbcType=VARCHAR}, #{userinfoSubCenterId,jdbcType=INTEGER},
+      #{userinfoSex,jdbcType=VARCHAR}, #{userinfoWechatHeadimage,jdbcType=VARCHAR}, #{userinfoAge,jdbcType=VARCHAR},
+      #{userinfoRoleTag,jdbcType=VARCHAR}, #{userinfoCreatetime,jdbcType=TIMESTAMP},
+      #{userinfoIsSubscribe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.entity.UserInfo" >
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userinfoId != null" >
+        USERINFO_ID,
+      </if>
+      <if test="userinfoName != null" >
+        USERINFO_NAME,
+      </if>
+      <if test="userDes != null" >
+        USER_DES,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="userinfoWechatName != null" >
+        USERINFO_WECHAT_NAME,
+      </if>
+      <if test="userinfoWechatAppid != null" >
+        USERINFO_WECHAT_APPID,
+      </if>
+      <if test="userinfoWechatOpenid != null" >
+        USERINFO_WECHAT_OPENID,
+      </if>
+      <if test="userinfoSubCenterId != null" >
+        USERINFO_SUB_CENTER_ID,
+      </if>
+      <if test="userinfoSex != null" >
+        USERINFO_SEX,
+      </if>
+      <if test="userinfoWechatHeadimage != null" >
+        USERINFO_WECHAT_HEADIMAGE,
+      </if>
+      <if test="userinfoAge != null" >
+        USERINFO_AGE,
+      </if>
+      <if test="userinfoRoleTag != null" >
+        USERINFO_ROLE_TAG,
+      </if>
+      <if test="userinfoCreatetime != null" >
+        USERINFO_CREATETIME,
+      </if>
+      <if test="userinfoIsSubscribe != null" >
+        USERINFO_IS_SUBSCRIBE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userinfoId != null" >
+        #{userinfoId,jdbcType=INTEGER},
+      </if>
+      <if test="userinfoName != null" >
+        #{userinfoName,jdbcType=VARCHAR},
+      </if>
+      <if test="userDes != null" >
+        #{userDes,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoWechatName != null" >
+        #{userinfoWechatName,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoWechatAppid != null" >
+        #{userinfoWechatAppid,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoWechatOpenid != null" >
+        #{userinfoWechatOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoSubCenterId != null" >
+        #{userinfoSubCenterId,jdbcType=INTEGER},
+      </if>
+      <if test="userinfoSex != null" >
+        #{userinfoSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoWechatHeadimage != null" >
+        #{userinfoWechatHeadimage,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoAge != null" >
+        #{userinfoAge,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoRoleTag != null" >
+        #{userinfoRoleTag,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoCreatetime != null" >
+        #{userinfoCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userinfoIsSubscribe != null" >
+        #{userinfoIsSubscribe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.entity.UserInfo" >
+    update userinfo
+    <set >
+      <if test="userinfoName != null" >
+        USERINFO_NAME = #{userinfoName,jdbcType=VARCHAR},
+      </if>
+      <if test="userDes != null" >
+        USER_DES = #{userDes,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoWechatName != null" >
+        USERINFO_WECHAT_NAME = #{userinfoWechatName,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoWechatAppid != null" >
+        USERINFO_WECHAT_APPID = #{userinfoWechatAppid,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoWechatOpenid != null" >
+        USERINFO_WECHAT_OPENID = #{userinfoWechatOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoSubCenterId != null" >
+        USERINFO_SUB_CENTER_ID = #{userinfoSubCenterId,jdbcType=INTEGER},
+      </if>
+      <if test="userinfoSex != null" >
+        USERINFO_SEX = #{userinfoSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoWechatHeadimage != null" >
+        USERINFO_WECHAT_HEADIMAGE = #{userinfoWechatHeadimage,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoAge != null" >
+        USERINFO_AGE = #{userinfoAge,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoRoleTag != null" >
+        USERINFO_ROLE_TAG = #{userinfoRoleTag,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfoCreatetime != null" >
+        USERINFO_CREATETIME = #{userinfoCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userinfoIsSubscribe != null" >
+        USERINFO_IS_SUBSCRIBE = #{userinfoIsSubscribe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERINFO_ID = #{userinfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.entity.UserInfo" >
+    update userinfo
+    set USERINFO_NAME = #{userinfoName,jdbcType=VARCHAR},
+      USER_DES = #{userDes,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=VARCHAR},
+      USERINFO_WECHAT_NAME = #{userinfoWechatName,jdbcType=VARCHAR},
+      USERINFO_WECHAT_APPID = #{userinfoWechatAppid,jdbcType=VARCHAR},
+      USERINFO_WECHAT_OPENID = #{userinfoWechatOpenid,jdbcType=VARCHAR},
+      USERINFO_SUB_CENTER_ID = #{userinfoSubCenterId,jdbcType=INTEGER},
+      USERINFO_SEX = #{userinfoSex,jdbcType=VARCHAR},
+      USERINFO_WECHAT_HEADIMAGE = #{userinfoWechatHeadimage,jdbcType=VARCHAR},
+      USERINFO_AGE = #{userinfoAge,jdbcType=VARCHAR},
+      USERINFO_ROLE_TAG = #{userinfoRoleTag,jdbcType=VARCHAR},
+      USERINFO_CREATETIME = #{userinfoCreatetime,jdbcType=TIMESTAMP},
+      USERINFO_IS_SUBSCRIBE = #{userinfoIsSubscribe,jdbcType=VARCHAR}
+    where USERINFO_ID = #{userinfoId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByUserInfo" resultMap="BaseResultMap" parameterType="com.cn.entity.UserInfo" >
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    where  1=1
+    <if test="userinfoIsSubscribe != null and userinfoIsSubscribe != ''" >
+        AND USERINFO_IS_SUBSCRIBE = #{userinfoIsSubscribe,jdbcType=VARCHAR}
+    </if>
+    <if test="userinfoWechatOpenid != null and userinfoWechatOpenid != ''" >
+      AND USERINFO_WECHAT_OPENID = #{userinfoWechatOpenid,jdbcType=VARCHAR}
+    </if>
+    <if test="userinfoSubCenterId != null " >
+      AND USERINFO_SUB_CENTER_ID = #{userinfoSubCenterId,jdbcType=INTEGER}
+    </if>
+    <if test="userinfoWechatAppid != null and userinfoWechatAppid != ''" >
+      AND USERINFO_WECHAT_APPID = #{userinfoWechatAppid,jdbcType=VARCHAR}
+    </if>
+    <if test="userinfoId != null " >
+      AND USERINFO_ID = #{userinfoId,jdbcType=INTEGER}
+    </if>
+    <if test="userinfoRoleTag != null and userinfoRoleTag != ''" >
+      AND USERINFO_ROLE_TAG = #{userinfoRoleTag,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+
+  <select id="queryPageByConditons" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT * from (SELECT T1.*, rownum linenum from (
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    where 1=1
+    <if test="map.userinfoSubCenterId != null and map.userinfoSubCenterId != ''">
+      and USERINFO_SUB_CENTER_ID=#{map.userinfoSubCenterId}
+    </if>
+    <if test="map.userinfoName != null and map.userinfoName != ''">
+      and USERINFO_NAME LIKE CONCAT(CONCAT('%',#{map.userinfoName},'%'))
+    </if>
+    <if test="map.userinfoAge != null and map.userinfoAge != ''">
+      and USERINFO_AGE =#{map.userinfoAge}
+    </if>
+    <if test="map.userinfoSex != null and map.userinfoSex != ''">
+      and USERINFO_SEX =#{map.userinfoSex}
+    </if>
+    order by
+    USERINFO_CREATETIME desc
+    )T1 WHERE rownum &lt;= #{map.endRow})
+    T2 WHERE linenum &gt;= #{map.startRow}
+  </select>
+
+
+  <select id="queryPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(1) FROM userinfo
+    WHERE 1=1
+    <if test="map.userinfoSubCenterId != null and map.userinfoSubCenterId != ''">
+      and USERINFO_SUB_CENTER_ID=#{map.userinfoSubCenterId}
+    </if>
+    <if test="map.userinfoName != null and map.userinfoName != ''">
+      and USERINFO_NAME LIKE CONCAT(CONCAT('%',#{map.userinfoName},'%'))
+    </if>
+    <if test="map.userinfoAge != null and map.userinfoAge != ''">
+      and USERINFO_AGE =#{map.userinfoAge}
+    </if>
+    <if test="map.userinfoSex != null and map.userinfoSex != ''">
+      and USERINFO_SEX =#{map.userinfoSex}
+    </if>
+
+  </select>
+
+</mapper>

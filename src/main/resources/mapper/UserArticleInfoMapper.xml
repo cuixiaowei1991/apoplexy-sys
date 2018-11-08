@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.dao.UserArticleInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.entity.UserArticleInfo" >
+    <constructor >
+      <idArg column="USERARTICLE_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="USERARTICLE_ARTICLE_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="USERARTICLE_USER_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="USERARTICLE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="USERARTICLE_STATUS" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USERARTICLE_ID, USERARTICLE_ARTICLE_ID, USERARTICLE_USER_ID, USERARTICLE_TIME,
+    USERARTICLE_STATUS
+  </sql>
+  <select id="selectByEntity" resultMap="BaseResultMap" parameterType="com.cn.entity.UserArticleInfo" >
+    select 
+    <include refid="Base_Column_List" />
+    from userarticleinfo
+    where  1=1
+    <if test="userarticleId != null" >
+      AND USERARTICLE_ID = #{userarticleId,jdbcType=INTEGER}
+    </if>
+    <if test="userarticleUserId != null" >
+      AND USERARTICLE_USER_ID = #{userarticleUserId,jdbcType=INTEGER}
+    </if>
+    <if test="userarticleArticleId != null" >
+      AND USERARTICLE_ARTICLE_ID = #{userarticleArticleId,jdbcType=INTEGER}
+    </if>
+    <if test="userarticleStatus != null and userarticleStatus != ''" >
+      AND USERARTICLE_STATUS = #{userarticleStatus,jdbcType=INTEGER}
+    </if>
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userarticleinfo
+    where USERARTICLE_ID = #{userarticleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.UserArticleInfo" >
+    insert into userarticleinfo (USERARTICLE_ID, USERARTICLE_ARTICLE_ID,
+      USERARTICLE_USER_ID, USERARTICLE_TIME, USERARTICLE_STATUS
+      )
+    values (#{userarticleId,jdbcType=INTEGER}, #{userarticleArticleId,jdbcType=INTEGER}, 
+      #{userarticleUserId,jdbcType=INTEGER}, #{userarticleTime,jdbcType=TIMESTAMP}, #{userarticleStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.entity.UserArticleInfo" >
+    insert into userarticleinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userarticleId != null" >
+        USERARTICLE_ID,
+      </if>
+      <if test="userarticleArticleId != null" >
+        USERARTICLE_ARTICLE_ID,
+      </if>
+      <if test="userarticleUserId != null" >
+        USERARTICLE_USER_ID,
+      </if>
+      <if test="userarticleTime != null" >
+        USERARTICLE_TIME,
+      </if>
+      <if test="userarticleStatus != null" >
+        USERARTICLE_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userarticleId != null" >
+        #{userarticleId,jdbcType=INTEGER},
+      </if>
+      <if test="userarticleArticleId != null" >
+        #{userarticleArticleId,jdbcType=INTEGER},
+      </if>
+      <if test="userarticleUserId != null" >
+        #{userarticleUserId,jdbcType=INTEGER},
+      </if>
+      <if test="userarticleTime != null" >
+        #{userarticleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userarticleStatus != null" >
+        #{userarticleStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.entity.UserArticleInfo" >
+    update userarticleinfo
+    <set >
+      <if test="userarticleArticleId != null" >
+        USERARTICLE_ARTICLE_ID = #{userarticleArticleId,jdbcType=INTEGER},
+      </if>
+      <if test="userarticleUserId != null" >
+        USERARTICLE_USER_ID = #{userarticleUserId,jdbcType=INTEGER},
+      </if>
+      <if test="userarticleTime != null" >
+        USERARTICLE_TIME = #{userarticleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userarticleStatus != null" >
+        USERARTICLE_STATUS = #{userarticleStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where 1=1
+    <if test="userarticleId != null" >
+       AND USERARTICLE_ID = #{userarticleId,jdbcType=INTEGER}
+    </if>
+    <if test="userarticleArticleId != null" >
+      AND USERARTICLE_ARTICLE_ID = #{userarticleArticleId,jdbcType=INTEGER}
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.entity.UserArticleInfo" >
+    update userarticleinfo
+    set USERARTICLE_ARTICLE_ID = #{userarticleArticleId,jdbcType=INTEGER},
+      USERARTICLE_USER_ID = #{userarticleUserId,jdbcType=INTEGER},
+      USERARTICLE_TIME = #{userarticleTime,jdbcType=TIMESTAMP},
+      USERARTICLE_STATUS = #{userarticleStatus,jdbcType=VARCHAR}
+    where USERARTICLE_ID = #{userarticleId,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryPageByConditons" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT * from (SELECT T1.*, rownum linenum from (
+    select
+    <include refid="Base_Column_List" />
+    from userarticleinfo
+    where 1=1 AND USERARTICLE_STATUS='1'
+    <if test="map.userarticleUserId != null and map.userarticleUserId != ''">
+      and USERARTICLE_USER_ID=#{map.userarticleUserId}
+    </if>
+    <!--<if test="map.messageOpenid != null and map.messageOpenid != ''">
+      and MESSAGE_OPENID =#{map.messageOpenid}
+    </if>-->
+    order by
+    USERARTICLE_TIME desc
+    )T1 WHERE rownum &lt;= #{map.endRow})
+    T2 WHERE linenum &gt;= #{map.startRow}
+  </select>
+
+
+  <select id="queryPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(1) FROM userarticleinfo
+    WHERE 1=1 AND USERARTICLE_STATUS='1'
+    <if test="map.userarticleUserId != null and map.userarticleUserId != ''">
+      and USERARTICLE_USER_ID=#{map.userarticleUserId}
+    </if>
+
+  </select>
+</mapper>

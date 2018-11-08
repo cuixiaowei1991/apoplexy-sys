@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.dao.MessageInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.entity.MessageInfo" >
+    <constructor >
+      <idArg column="MESSAGE_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="MESSAGE_OPENID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MESSAGE_TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MESSAGE_CONTENT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_CENTER_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="MESSAGE_USER_DES" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ADVICE_REPLY_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="MESSAGE_CREATETIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="TOPIC_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MESSAGE_APPID" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MESSAGE_ID, MESSAGE_OPENID, MESSAGE_TYPE, MESSAGE_CONTENT, USER_CENTER_ID, MESSAGE_USER_DES, 
+    ADVICE_REPLY_TIME,MESSAGE_CREATETIME, TOPIC_ID,MESSAGE_APPID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from messageinfo
+    where MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from messageinfo
+    where MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.MessageInfo" >
+    insert into messageinfo (MESSAGE_ID, MESSAGE_OPENID, MESSAGE_TYPE, 
+      MESSAGE_CONTENT, USER_CENTER_ID, MESSAGE_USER_DES, 
+      ADVICE_REPLY_TIME,MESSAGE_CREATETIME, TOPIC_ID,MESSAGE_APPID)
+    values (#{messageId,jdbcType=INTEGER}, #{messageOpenid,jdbcType=VARCHAR}, #{messageType,jdbcType=VARCHAR}, 
+      #{messageContent,jdbcType=VARCHAR}, #{userCenterId,jdbcType=INTEGER}, #{messageUserDes,jdbcType=VARCHAR}, 
+      #{adviceReplyTime,jdbcType=TIMESTAMP},#{messageCreatetime,jdbcType=TIMESTAMP}, #{topicId,jdbcType=VARCHAR},
+      #{messageAppid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.entity.MessageInfo" >
+    insert into messageinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageId != null" >
+        MESSAGE_ID,
+      </if>
+      <if test="messageOpenid != null" >
+        MESSAGE_OPENID,
+      </if>
+      <if test="messageType != null" >
+        MESSAGE_TYPE,
+      </if>
+      <if test="messageContent != null" >
+        MESSAGE_CONTENT,
+      </if>
+      <if test="userCenterId != null" >
+        USER_CENTER_ID,
+      </if>
+      <if test="messageUserDes != null" >
+        MESSAGE_USER_DES,
+      </if>
+      <if test="adviceReplyTime != null" >
+        ADVICE_REPLY_TIME,
+      </if>
+      <if test="messageCreatetime != null" >
+        MESSAGE_CREATETIME,
+      </if>
+      <if test="topicId != null" >
+        TOPIC_ID,
+      </if>
+      <if test="messageAppid != null" >
+        MESSAGE_APPID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageId != null" >
+        #{messageId,jdbcType=INTEGER},
+      </if>
+      <if test="messageOpenid != null" >
+        #{messageOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="messageType != null" >
+        #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="messageContent != null" >
+        #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userCenterId != null" >
+        #{userCenterId,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserDes != null" >
+        #{messageUserDes,jdbcType=VARCHAR},
+      </if>
+      <if test="adviceReplyTime != null" >
+        #{adviceReplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="messageCreatetime != null" >
+        #{messageCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topicId != null" >
+        #{topicId,jdbcType=VARCHAR},
+      </if>
+      <if test="messageAppid != null" >
+        #{messageAppid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.entity.MessageInfo" >
+    update messageinfo
+    <set >
+      <if test="messageOpenid != null" >
+        MESSAGE_OPENID = #{messageOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="messageType != null" >
+        MESSAGE_TYPE = #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="messageContent != null" >
+        MESSAGE_CONTENT = #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userCenterId != null" >
+        USER_CENTER_ID = #{userCenterId,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserDes != null" >
+        MESSAGE_USER_DES = #{messageUserDes,jdbcType=VARCHAR},
+      </if>
+      <if test="adviceReplyTime != null" >
+        ADVICE_REPLY_TIME = #{adviceReplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="messageCreatetime != null" >
+        MESSAGE_CREATETIME = #{messageCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topicId != null" >
+        TOPIC_ID = #{topicId,jdbcType=VARCHAR},
+      </if>
+      <if test="messageAppid != null" >
+        MESSAGE_APPID = #{messageAppid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.entity.MessageInfo" >
+    update messageinfo
+    set MESSAGE_OPENID = #{messageOpenid,jdbcType=VARCHAR},
+      MESSAGE_TYPE = #{messageType,jdbcType=VARCHAR},
+      MESSAGE_CONTENT = #{messageContent,jdbcType=VARCHAR},
+      USER_CENTER_ID = #{userCenterId,jdbcType=INTEGER},
+      MESSAGE_USER_DES = #{messageUserDes,jdbcType=VARCHAR},
+      ADVICE_REPLY_TIME = #{adviceReplyTime,jdbcType=TIMESTAMP},
+      MESSAGE_CREATETIME = #{messageCreatetime,jdbcType=TIMESTAMP},
+      TOPIC_ID = #{topicId,jdbcType=VARCHAR},
+      MESSAGE_APPID = #{messageAppid,jdbcType=VARCHAR}
+    where MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryPageByConditons" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT * from (SELECT T1.*, rownum linenum from (
+    select
+    <include refid="Base_Column_List" />
+    from messageinfo
+    where 1=1
+    <if test="map.messageId != null and map.messageId != ''">
+      and MESSAGE_ID=#{map.messageId}
+    </if>
+    <if test="map.topicId != null and map.topicId != ''">
+      and TOPIC_ID=#{map.topicId}
+    </if>
+    <if test="map.messageOpenid != null and map.messageOpenid != ''">
+      and MESSAGE_OPENID =#{map.messageOpenid}
+    </if>
+    <!--<if test="map.messageOpenid != null and map.messageOpenid != ''">
+      and MESSAGE_OPENID =#{map.messageOpenid}
+    </if>-->
+    order by
+    MESSAGE_CREATETIME desc
+    )T1 WHERE rownum &lt;= #{map.endRow})
+    T2 WHERE linenum &gt;= #{map.startRow}
+  </select>
+
+
+  <select id="queryPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(1) FROM messageinfo
+    WHERE 1=1
+    <if test="map.topicId != null and map.topicId != ''">
+      and TOPIC_ID=#{map.topicId}
+    </if>
+    <if test="map.messageOpenid != null and map.messageOpenid != ''">
+      and MESSAGE_OPENID =#{map.messageOpenid}
+    </if>
+
+  </select>
+
+</mapper>

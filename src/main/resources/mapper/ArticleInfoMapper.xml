@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.dao.ArticleInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.entity.ArticleInfo" >
+    <constructor >
+      <idArg column="ARTICLE_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ARTICLE_TITLE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ARTICLE_CONTENT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ARTICLE_UP_USERID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ARTICLE_SUB_CENTERID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ARTICLE_UP_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="ARTICLE_IS_DEL" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ARTICLE_ID, ARTICLE_TITLE, ARTICLE_CONTENT, ARTICLE_UP_USERID, ARTICLE_SUB_CENTERID, 
+    ARTICLE_UP_TIME,ARTICLE_IS_DEL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from articleinfo
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+          AND ARTICLE_IS_DEL='2'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from articleinfo
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.ArticleInfo" >
+    insert into articleinfo (ARTICLE_ID, ARTICLE_TITLE, ARTICLE_CONTENT, 
+      ARTICLE_UP_USERID, ARTICLE_SUB_CENTERID, ARTICLE_UP_TIME,ARTICLE_IS_DEL
+      )
+    values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{articleContent,jdbcType=VARCHAR}, 
+      #{articleUpUserid,jdbcType=INTEGER}, #{articleSubCenterid,jdbcType=INTEGER}, #{articleUpTime,jdbcType=TIMESTAMP},
+      #{articleIsDel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.entity.ArticleInfo" >
+    insert into articleinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        ARTICLE_ID,
+      </if>
+      <if test="articleTitle != null" >
+        ARTICLE_TITLE,
+      </if>
+      <if test="articleContent != null" >
+        ARTICLE_CONTENT,
+      </if>
+      <if test="articleUpUserid != null" >
+        ARTICLE_UP_USERID,
+      </if>
+      <if test="articleSubCenterid != null" >
+        ARTICLE_SUB_CENTERID,
+      </if>
+      <if test="articleUpTime != null" >
+        ARTICLE_UP_TIME,
+      </if>
+      <if test="articleIsDel != null" >
+        ARTICLE_IS_DEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null" >
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContent != null" >
+        #{articleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="articleUpUserid != null" >
+        #{articleUpUserid,jdbcType=INTEGER},
+      </if>
+      <if test="articleSubCenterid != null" >
+        #{articleSubCenterid,jdbcType=INTEGER},
+      </if>
+      <if test="articleUpTime != null" >
+        #{articleUpTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleIsDel != null" >
+        #{articleIsDel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.entity.ArticleInfo" >
+    update articleinfo
+    <set >
+      <if test="articleTitle != null" >
+        ARTICLE_TITLE = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContent != null" >
+        ARTICLE_CONTENT = #{articleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="articleUpUserid != null" >
+        ARTICLE_UP_USERID = #{articleUpUserid,jdbcType=INTEGER},
+      </if>
+      <if test="articleSubCenterid != null" >
+        ARTICLE_SUB_CENTERID = #{articleSubCenterid,jdbcType=INTEGER},
+      </if>
+      <if test="articleUpTime != null" >
+        ARTICLE_UP_TIME = #{articleUpTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleIsDel != null" >
+        ARTICLE_IS_DEL = #{articleIsDel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.entity.ArticleInfo" >
+    update articleinfo
+    set ARTICLE_TITLE = #{articleTitle,jdbcType=VARCHAR},
+      ARTICLE_CONTENT = #{articleContent,jdbcType=VARCHAR},
+      ARTICLE_UP_USERID = #{articleUpUserid,jdbcType=INTEGER},
+      ARTICLE_SUB_CENTERID = #{articleSubCenterid,jdbcType=INTEGER},
+      ARTICLE_UP_TIME = #{articleUpTime,jdbcType=TIMESTAMP},
+      ARTICLE_IS_DEL = #{articleIsDel,jdbcType=VARCHAR}
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryPageByConditons" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT * from (SELECT T1.*, rownum linenum from (
+    select
+    <include refid="Base_Column_List" />
+    from articleinfo
+    where 1=1 AND ARTICLE_IS_DEL='2'
+    <if test="map.articleTitle != null and map.articleTitle != ''">
+      and ARTICLE_TITLE=#{map.articleTitle}
+    </if>
+    <if test="map.articleUpUserid != null and map.articleUpUserid != ''">
+      and ARTICLE_UP_USERID=#{map.articleUpUserid}
+    </if>
+    <if test="map.articleSubCenterid != null and map.articleSubCenterid != ''">
+      and ARTICLE_SUB_CENTERID =#{map.articleSubCenterid}
+    </if>
+    <!--<if test="map.messageOpenid != null and map.messageOpenid != ''">
+      and MESSAGE_OPENID =#{map.messageOpenid}
+    </if>-->
+    order by
+    ARTICLE_UP_TIME desc
+    )T1 WHERE rownum &lt;= #{map.endRow})
+    T2 WHERE linenum &gt;= #{map.startRow}
+  </select>
+
+
+  <select id="queryPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(1) FROM articleinfo
+    WHERE 1=1 and ARTICLE_IS_DEL='2'
+    <if test="map.articleTitle != null and map.articleTitle != ''">
+      and ARTICLE_TITLE=#{map.articleTitle}
+    </if>
+    <if test="map.articleUpUserid != null and map.articleUpUserid != ''">
+      and ARTICLE_UP_USERID=#{map.articleUpUserid}
+    </if>
+    <if test="map.articleSubCenterid != null and map.articleSubCenterid != ''">
+      and ARTICLE_SUB_CENTERID =#{map.articleSubCenterid}
+    </if>
+
+  </select>
+</mapper>

@@ -1,0 +1,125 @@
+2018.11.01-14:14:32 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:37)  - 获取获取openid  请求微信https开始:
+2018.11.01-14:14:34 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:99)  - 返回:{"errcode":40001,"errmsg":"invalid credential, access_token is invalid or not latest hint: [2Qb4ua0865vr49!]"}@@
+2018.11.01-14:18:52 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:37)  - 远程获取三方平台的access_token  请求微信https开始:
+2018.11.01-14:31:59 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:38)  - 远程获取三方平台的access_token  请求微信https开始:
+2018.11.01-14:32:14 [main] ERROR com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:97)  - 远程获取三方平台的access_token  出现异常
+java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:656)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:275)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:371)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1282)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1257)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getOutputStream(HttpsURLConnectionImpl.java:250)
+	at com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:57)
+	at com.cn.common.AuthorizerAccessToken.initAuthMap(AuthorizerAccessToken.java:38)
+	at com.cn.common.AuthorizerAccessToken.<init>(AuthorizerAccessToken.java:22)
+	at com.cn.controller.WechatUserInfoController.main(WechatUserInfoController.java:16)
+
+2018.11.01-14:32:14 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:100)  - 返回:error@@
+2018.11.01-14:35:55 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:38)  - 远程获取三方平台的access_token  请求微信https开始:http://www.wumeimart.com/authorization/accessToken?appid=wx3fc913b1cac94b23
+2018.11.01-14:36:08 [main] ERROR com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:97)  - 远程获取三方平台的access_token  出现异常
+java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:656)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:275)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:371)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1282)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1257)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getOutputStream(HttpsURLConnectionImpl.java:250)
+	at com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:57)
+	at com.cn.common.AuthorizerAccessToken.initAuthMap(AuthorizerAccessToken.java:38)
+	at com.cn.common.AuthorizerAccessToken.<init>(AuthorizerAccessToken.java:22)
+	at com.cn.controller.WechatUserInfoController.main(WechatUserInfoController.java:16)
+
+2018.11.01-14:36:08 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:100)  - 返回:error@@
+2018.11.01-14:40:15 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:39)  - 获取获取openid  请求微信https开始:https://api.weixin.qq.com/cgi-bin/user/info?access_token=15_zUGmeR8Ql-_QG7AL8dLpoREvlNI_xShIZlC1eRh4DBiR7QeSNq8W_2Ij4aoSRvJA9obda5BSjat32xFpcQQC5AZpdV7VQLw2ezhBPO9KJHSmxLtSDhMz8sEJNYyPHJm4KmjeJHdfgwtn3da7BWHaAHDIDO&openid=oHHOn1G_Z8JKBCEHmXIerZF8kksc
+2018.11.01-14:40:19 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:101)  - 返回:{"subscribe":1,"openid":"oHHOn1G_Z8JKBCEHmXIerZF8kksc","nickname":"伴花天河","sex":1,"language":"zh_CN","city":"西城","province":"北京","country":"中国","headimgurl":"http:\/\/thirdwx.qlogo.cn\/mmopen\/uzQkLfLR1cxjbict5jeU9zghUzfYaGE51jKib3UbahmhMbBry4NMzicCKFQBmRDgkpvIr9W716nIibgK7qJNvwdkZLH5ebJ99Lbl\/132","subscribe_time":1540543722,"remark":"","groupid":0,"tagid_list":[],"subscribe_scene":"ADD_SCENE_SEARCH","qr_scene":0,"qr_scene_str":""}@@
+2018.11.01-14:53:58 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:39)  -   请求微信https开始:https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=15_zUGmeR8Ql-_QG7AL8dLpoREvlNI_xShIZlC1eRh4DBiR7QeSNq8W_2Ij4aoSRvJA9obda5BSjat32xFpcQQC5AZpdV7VQLw2ezhBPO9KJHSmxLtSDhMz8sEJNYyPHJm4KmjeJHdfgwtn3da7BWHaAHDIDO
+2018.11.01-14:54:00 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:101)  - 返回:{"errcode":0,"errmsg":"ok"}@@
+2018.11.01-16:48:58 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:39)  -   请求微信https开始:http://www.wumeimart.com/authorization/getUserInfo
+2018.11.01-16:49:09 [main] ERROR com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:98)  -   出现异常
+java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:656)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:275)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:371)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1282)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1257)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getOutputStream(HttpsURLConnectionImpl.java:250)
+	at com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:58)
+	at com.cn.service.impl.OpenfCommonServiceImpl.main(OpenfCommonServiceImpl.java:43)
+
+2018.11.01-16:49:09 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:101)  - 返回:error@@
+2018.11.01-16:51:59 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:39)  -   请求微信https开始:http://www.wumeimart.com/authorization/getUserInfo
+2018.11.01-16:52:09 [main] ERROR com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:98)  -   出现异常
+java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:656)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:275)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:371)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1282)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1257)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getOutputStream(HttpsURLConnectionImpl.java:250)
+	at com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:58)
+	at com.cn.service.impl.OpenfCommonServiceImpl.main(OpenfCommonServiceImpl.java:44)
+
+2018.11.01-16:52:09 [main] INFO  com.cn.common.httpsPostMethod.sendHttpsPost(httpsPostMethod.java:101)  - 返回:error@@
+2018.11.01-16:56:17 [main] INFO  com.cn.common.httpsPostMethod.httpRequest(httpsPostMethod.java:149)  - ====================================
+2018.11.01-16:56:17 [main] INFO  com.cn.common.httpsPostMethod.httpRequest(httpsPostMethod.java:151)  - =+++++++++++++++++++++++++++++++++++
