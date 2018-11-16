@@ -58,6 +58,7 @@ public class CrossDomainFilterHelper implements Filter {
 				if (allowOriginList.contains(currentOrigin)) {
 					response.setHeader("Access-Control-Allow-Origin",
 							currentOrigin); // 允许来自currentOrigin域的客户端访问
+					
 				}
 			}
 		}
